@@ -7,7 +7,15 @@ let player4 = {name:'Jogador 4',hand : deck.splice(0,7)};
 
 let players = [player1,player2,player3,player4];
 
-console.log(player1)
+function gameLoop(){
+    while(player4.hand.length > 0){
+        for(let i = 0; i < players.length ; i++){
+            let activePlayer = players[i];
+            const dropCard = (activePlayer.hand.splice(0,1))[0];
+            console.log( `O player ${activePlayer.name} jogou a carta: ${JSON.stringify(dropCard)}`);
+        }
+    }
+}
 
 function gererateCards() {
     const colors = ['blue','green','yellow','red'];
@@ -54,12 +62,4 @@ function shuffle(array) {
     return array;
   }
 
-//19 Cartas azuis, numeradas de 0 a 9;
-//19 Cartas verdes, numeradas de 0 a 9;
-//19 Cartas amarelas, numeradas de 0 a 9;
-//19 Cartas vermelhas, numeradas de 0 a 9;
-//8 Cartas de inversão de sentido (duas de cada cor);
-//8 Cartas de +2 (duas de cada cor);
-//8 Cartas de Pular (duas de cada cor);
-//4 Cartas de joker para troca de cor;
-//4 Cartas de joker troca de cor e +4.
+gameLoop();
